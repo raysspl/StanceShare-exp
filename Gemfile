@@ -28,8 +28,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
-# gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'devise'
 
 gem 'lolize', :require => 'lolize/auto'
 
