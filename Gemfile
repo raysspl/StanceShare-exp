@@ -25,6 +25,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
+gem 'lolize', :require => 'lolize/auto'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
