@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# IMPORTANT to set Ruby version
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -26,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
 gem 'lolize', :require => 'lolize/auto'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
