@@ -28,6 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
+gem 'rails_12factor', group: :production
+
 gem 'lolize', :require => 'lolize/auto'
 
 
