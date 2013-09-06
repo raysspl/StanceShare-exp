@@ -3,7 +3,7 @@
 =====
 <b>The place where gearheads and hotrodders connect, share, and discover car parts. Customers can upload photos in a pinterest style of way and share amongst each other. Be excited.</b>
 
-You can also check <a href='https://stancetrader.com'>StanceTrader.com</a>
+You can also check https://StanceTrader.com for my other current project.
 
 
 This README would normally document whatever steps are necessary to get the
