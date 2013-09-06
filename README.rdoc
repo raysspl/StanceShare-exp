@@ -1,4 +1,10 @@
-== README
+== StanceShare v2
+
+=====
+<b>The place where gearheads and hotrodders connect, share, and discover car parts. Customers can upload photos in a pinterest style of way and share amongst each other. Be excited.</b>
+
+You can also check <a href='https://stancetrader.com'>StanceTrader.com</a>
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
