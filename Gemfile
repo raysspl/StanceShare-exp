@@ -40,8 +40,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
-	gem 'sqlite3'
+# group :development do
+# 	gem 'sqlite3'
+# end
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
