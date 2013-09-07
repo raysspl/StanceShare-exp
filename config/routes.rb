@@ -4,7 +4,9 @@ Stanceshare2::Application.routes.draw do
   root 'pages#home'
 
   get 'about' => 'pages#about'
+  post 'users' => 'users#create'
 
+  resources :users
 
 
   # The priority is based upon order of creation: first created -> highest priority.
