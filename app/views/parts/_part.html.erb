@@ -1,0 +1,17 @@
+<div class='box'>
+	<%= link_to (image_tag part.image(:medium)), part %>
+	<p class='description'>
+		<%= part.description %>
+	</p>
+	<p>
+		<strong>
+			By <%= link_to part.user.name, part.user %>
+		</strong>
+	</p>
+	<% if current_user == part.user %>
+		<p>
+			<%= link_to 'Edit', edit_part_path(part) %>
+			<%= link_to 'Delete', part, method: :delete, data: { confirm: 'You sure you want to delete?' } %>
+		</p>
+	<% end %>
+</div>
