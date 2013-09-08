@@ -5,8 +5,11 @@ Stanceshare2::Application.routes.draw do
 # You can have the root of your site routed with "root"
   root 'pages#home'
 
+
   get 'about' => 'pages#about'
   post 'users' => 'users#create'
+
+  root 'parts#index'
 
   resources :users
 

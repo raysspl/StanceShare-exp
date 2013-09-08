@@ -1,28 +1,7 @@
-<h1>Listing parts</h1>
+<%= render 'pages/home' %>
 
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div id='parts'>
+  <%= render partial: 'part', collection: @parts %>
+</div>
 
-  <tbody>
-    <% @parts.each do |part| %>
-      <tr>
-        <td><%= part.description %></td>
-        <td><%= link_to 'Show', part %></td>
-        <td><%= link_to 'Edit', edit_part_path(part) %></td>
-        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Part', new_part_path %>
+<%= will_paginate @parts %>

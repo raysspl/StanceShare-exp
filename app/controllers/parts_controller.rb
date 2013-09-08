@@ -5,7 +5,7 @@ class PartsController < ApplicationController
   # GET /parts.json
   def index
     # @parts = part.all
-    @parts = Part.order('created_at desc').page(params[:page]).per_page(10)
+    @parts = Part.order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
