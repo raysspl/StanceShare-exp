@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @part.description %>
-</p>
-
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+<div class="row">
+    <div class="span6 offset4">
+        <div class="well">
+            <%= image_tag @part.image %>
+            <p>
+              <%= @part.description %>
+            </p>
+            <p>
+              <%= @part.user.name %>
+            </p>
+            <% if current_user == @part.user %>
+                <%= link_to 'Edit', edit_part_path(@part) %> |
+            <% end %>
+            <%= link_to 'Back', parts_path %>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,11 @@ class PartsController < ApplicationController
   # GET /parts.json
   def index
     @parts = Part.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @parts }
+    end
   end
 
   # GET /parts/1
@@ -14,17 +19,18 @@ class PartsController < ApplicationController
 
   # GET /parts/new
   def new
-    @part = Part.new
+    @part = current_user.parts.new
   end
 
   # GET /parts/1/edit
   def edit
+    @part = current_user.parts.find(params[:id])
   end
 
   # POST /parts
   # POST /parts.json
   def create
-    @part = Part.new(part_params)
+    @part = current_user.parts.new(params[:parts])
 
     respond_to do |format|
       if @part.save
@@ -40,6 +46,8 @@ class PartsController < ApplicationController
   # PATCH/PUT /parts/1
   # PATCH/PUT /parts/1.json
   def update
+    @part = current_user.parts.find(params[:id])
+
     respond_to do |format|
       if @part.update(part_params)
         format.html { redirect_to @part, notice: 'Part was successfully updated.' }
@@ -54,6 +62,7 @@ class PartsController < ApplicationController
   # DELETE /parts/1
   # DELETE /parts/1.json
   def destroy
+    @part = current_user.parts.find(params[:id])
     @part.destroy
     respond_to do |format|
       format.html { redirect_to parts_url }
