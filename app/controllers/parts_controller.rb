@@ -1,10 +1,11 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index]
 
   # GET /parts
   # GET /parts.json
   def index
-    @parts = Part.all
+    # @parts = part.all
+    @parts = Part.order('created_at desc').page(params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,11 +16,23 @@ class PartsController < ApplicationController
   # GET /parts/1
   # GET /parts/1.json
   def show
+    @part = part.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @part }
+    end
   end
 
   # GET /parts/new
+  # GET /parts/new.json
   def new
-    @part = current_user.parts.new
+    # @part = current_user.parts.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @part }
+    end
   end
 
   # GET /parts/1/edit
@@ -30,30 +43,30 @@ class PartsController < ApplicationController
   # POST /parts
   # POST /parts.json
   def create
-    @part = current_user.parts.new(params[:parts])
+    @part = current_user.parts.new(params[:part])
 
     respond_to do |format|
       if @part.save
-        format.html { redirect_to @part, notice: 'Part was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @part }
+        format.html { redirect_to @part, notice: 'Car part was successfully posted!' }
+        format.json { render json: @part, status: :created, location: @part }
       else
-        format.html { render action: 'new' }
+        format.html { render action: "new" }
         format.json { render json: @part.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /parts/1
-  # PATCH/PUT /parts/1.json
+  # PUT /parts/1
+  # PUT /parts/1.json
   def update
     @part = current_user.parts.find(params[:id])
 
     respond_to do |format|
-      if @part.update(part_params)
-        format.html { redirect_to @part, notice: 'Part was successfully updated.' }
+      if @part.update_attributes(params[:part])
+        format.html { redirect_to @part, notice: 'part was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: "edit" }
         format.json { render json: @part.errors, status: :unprocessable_entity }
       end
     end
@@ -64,20 +77,10 @@ class PartsController < ApplicationController
   def destroy
     @part = current_user.parts.find(params[:id])
     @part.destroy
+
     respond_to do |format|
       format.html { redirect_to parts_url }
       format.json { head :no_content }
     end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_part
-      @part = Part.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def part_params
-      params.require(:part).permit(:description)
-    end
 end

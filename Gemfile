@@ -33,6 +33,7 @@ gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'devise'
 gem 'simple_form'
+gem 'paperclip', '~> 3.0'
 
 gem 'lolize', :require => 'lolize/auto'
 
