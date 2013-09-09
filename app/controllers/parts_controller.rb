@@ -1,11 +1,11 @@
 class PartsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /parts
   # GET /parts.json
   def index
     # @parts = part.all
-    @parts = part.order('created_at desc').page(params[:page]).per_page(10)
+    @parts = Part.order('created_at desc').page(params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class PartsController < ApplicationController
   # GET /parts/1
   # GET /parts/1.json
   def show
-    @part = part.find(params[:id])
+    @part = Part.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

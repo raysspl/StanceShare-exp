@@ -2,15 +2,15 @@ Stanceshare2::Application.routes.draw do
   resources :parts
 
   devise_for :users
-  resources 'users/:id' => 'users#show', as: :user
+  get 'users/:id' => 'users#show', as: :user
 
   get 'about' => 'pages#about'
   post 'users' => 'users#create'
 
   root :to => 'parts#index'
-  root :to => 'pages#home'
+  # root :to => 'pages#home'
 
-  resources :users
+  # resources :users
 
 
   # The priority is based upon order of creation: first created -> highest priority.
